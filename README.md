@@ -66,10 +66,17 @@ Options:
 
 ### Examples
 
-- To generate only one game type: `pipenv run game -t random`.
-- To generate multiple games for only one game type: `pipenv run game -t random -n 5`.
-- To generate more than one game type: `pipenv run game -t high-frequency -t low-frequency`
-- To generate multiple games for more than one game type: `pipenv run game -t high-frequency -t low-frequency -n 5`.
+- To generate only one game type:<br>
+  `pipenv run game -t random`.
+
+- To generate multiple games for only one game type:<br>
+  `pipenv run game -t random -n 5`.
+
+- To generate more than one game type:<br>
+  `pipenv run game -t high-frequency -t low-frequency`
+
+- To generate multiple games for more than one game type:<br>
+  `pipenv run game -t high-frequency -t low-frequency -n 5`.
 
 ---
 
