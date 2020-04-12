@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "==3.7.9"
+pydocstyle = "==5.0.2"
+mypy = "==0.761"
+pycodestyle = "==2.5.0"
+
+[packages]
+typer = "==0.1.1"
+beautifulsoup4 = "==4.9.0"
+pandas = "==1.0.3"
+
+[requires]
+python_version = "3.7"
+
+[scripts]
+database = "python src/database.py"
+game = "python src/game.py"
