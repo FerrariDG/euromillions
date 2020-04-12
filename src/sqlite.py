@@ -205,7 +205,6 @@ def insert_new_result(draw_date: date, result: Tuple[int, ...]) -> bool:
         )
         return False
     except Exception as e:
-        print(type(e))
         typer.echo(
             typer.style("ERROR: ", fg=typer.colors.RED, bold=True) +
             f"Unable save result on database [{str(e)}]."
