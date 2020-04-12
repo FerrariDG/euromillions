@@ -10,6 +10,8 @@ from typing import (
 
 import typer
 
+from game_generator import K_NUMBERS
+
 
 def days_between(start: datetime, end: datetime) -> Iterator[Tuple[int, datetime]]:
     """Yield all days between to dates including the start and end date.
@@ -31,8 +33,29 @@ def days_between(start: datetime, end: datetime) -> Iterator[Tuple[int, datetime
         yield (idx, start + timedelta(days=i))
 
 
-def print_result(result: Tuple[int, ...]):
-    """Print the Euromillions results.
+def format_numbers(nums: Tuple) -> str:
+    """Format an array of numbers.
+
+    Parameters
+    ----------
+    lst : Tuple
+        Array with numbers to be formatted
+
+    Returns
+    -------
+    str
+        String with number formatted
+
+    Example
+    -------
+    >>> format_numbers((2, 3, 10, 15))
+    ' 2,  3, 10, 15'
+    """
+    return ', '.join(map(lambda x: f"{x:2d}", nums))
+
+
+def print_game(result: Tuple[int, ...]):
+    """Print the Euromillions game.
 
     Parameters
     ----------
@@ -41,9 +64,7 @@ def print_result(result: Tuple[int, ...]):
     """
     typer.echo(
         "\tNumbers: " +
-        typer.style(f"{', '.join(map(str,result[:5]))}", fg=typer.colors.GREEN)
-    )
-    typer.echo(
+        typer.style(format_numbers(result[:K_NUMBERS]), fg=typer.colors.GREEN) +
         "\tStars  : " +
-        typer.style(f"{', '.join(map(str,result[5:]))}", fg=typer.colors.GREEN)
+        typer.style(format_numbers(result[K_NUMBERS:]), fg=typer.colors.GREEN)
     )

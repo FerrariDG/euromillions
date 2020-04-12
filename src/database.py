@@ -22,7 +22,7 @@ from scrapper import (
 
 from utils import (
     days_between,
-    print_result
+    print_game
 )
 
 
@@ -75,7 +75,7 @@ def database_status():
 
     typer.echo("Last result:")
     if result:
-        print_result(result)
+        print_game(result)
     else:
         typer.secho("\tNo result found", fg=typer.colors.YELLOW)
 
@@ -104,7 +104,7 @@ def update_result(
     if result:
         if insert_new_result(draw_date.date(), result):
             typer.echo("Result saved!")
-            print_result(result)
+            print_game(result)
 
 
 @app.command(name='full-update')
