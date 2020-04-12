@@ -56,7 +56,7 @@ Usage: game.py [OPTIONS]
   Generate multiple games for each game type passed.
 
 Options:
-  -t, --type [random|high_frequency|low_frequency]
+  -t, --type [random|high-frequency|low-frequency]
                                   Game type. It can be multiple types at once.
   -n, --num-of-games INTEGER      Number of games generate for each type.
                                   [default: 1]
@@ -68,8 +68,8 @@ Options:
 
 - To generate only one game type: `pipenv run game -t random`.
 - To generate multiple games for only one game type: `pipenv run game -t random -n 5`.
-- To generate more than one game type: `pipenv run game -t high_frequency -t low_frequency`
-- To generate multiple games for more than one game type: `pipenv run game -t high_frequency -t low_frequency -n 5`.
+- To generate more than one game type: `pipenv run game -t high-frequency -t low-frequency`
+- To generate multiple games for more than one game type: `pipenv run game -t high-frequency -t low-frequency -n 5`.
 
 ---
 

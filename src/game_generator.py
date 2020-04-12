@@ -28,8 +28,8 @@ class GameType(str, Enum):
     """Class of type of games."""
 
     random = "random"
-    high_frequency = "high_frequency"
-    low_frequency = "low_frequency"
+    high_frequency = "high-frequency"
+    low_frequency = "low-frequency"
 
 
 def get_games_and_stats() -> Tuple[np.ndarray, ...]:
