@@ -34,7 +34,7 @@ def has_only_even(game: np.ndarray) -> bool:
     bool
         True if the game has only even number, otherwise False.
     """
-    return all(map(lambda x: x % 2 != 0, game))
+    return all(map(lambda x: x % 2 == 0, game))
 
 
 def has_only_odd(game: np.ndarray) -> bool:
@@ -50,4 +50,4 @@ def has_only_odd(game: np.ndarray) -> bool:
     bool
         True if the game has only odd number, otherwise False.
     """
-    return all(map(lambda x: x % 2 == 0, game))
+    return all(map(lambda x: x % 2 != 0, game))
