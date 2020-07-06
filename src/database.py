@@ -104,7 +104,7 @@ def update_result(
     if result:
         if insert_new_result(draw_date.date(), result):
             typer.echo("Result saved!")
-            print_game(result)
+            print_game(result['draw'])
 
 
 @app.command(name='full-update')

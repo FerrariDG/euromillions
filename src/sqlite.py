@@ -6,6 +6,8 @@ import sqlite3
 from contextlib import contextmanager
 from datetime import date
 from typing import (
+    Any,
+    Dict,
     Optional,
     Tuple
 )
@@ -23,7 +25,9 @@ CREATE_EURO_RESULTS_TABLE = """
         n4 int NOT NULL,
         n5 int NOT NULL,
         s1 int NOT NULL,
-        s2 int NOT NULL
+        s2 int NOT NULL,
+        winners int,
+        prize int
     )
 """
 
@@ -177,26 +181,29 @@ def get_number_of_results() -> int:
     return row['n']
 
 
-def insert_new_result(draw_date: date, result: Tuple[int, ...]) -> bool:
+def insert_new_result(draw_date: date, result: Dict[str, Any]) -> bool:
     """Insert a new Euromillions results into the database.
 
     Parameters
     ----------
     draw_date : date
         Date of the draw.
-    result : Tuple[List[int], List[int]]
-        Number from the draw where the last two are the stars.
+    result : Dict[str, Any]
+        Numbers drawn where the last two are the star numbers.
+        Number of winners and main prize value (Optional).
 
     Returns
     -------
     bool
         Return True if insert was successful, False otherwise.
     """
-    query = f"INSERT INTO euro_results VALUES({','.join('?' * 8)})"
+    query = f"INSERT INTO euro_results VALUES({','.join('?' * 10)})"
+
+    values = (draw_date, ) + result['draw'] + (result.get('winners'), result.get('prize'))
 
     try:
         with connect() as con:
-            con.execute(query, (draw_date, ) + result)
+            con.execute(query, values)
             con.commit()
     except sqlite3.IntegrityError:
         typer.echo(
@@ -207,7 +214,7 @@ def insert_new_result(draw_date: date, result: Tuple[int, ...]) -> bool:
     except Exception as e:
         typer.echo(
             typer.style("ERROR: ", fg=typer.colors.RED, bold=True) +
-            f"Unable save result on database [{str(e)}]."
+            f"Unable save result on database [{repr(e)}]."
         )
         return False
 
