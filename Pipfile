@@ -10,9 +10,10 @@ mypy = "==0.761"
 pycodestyle = "==2.5.0"
 
 [packages]
-typer = "==0.1.1"
-beautifulsoup4 = "==4.9.0"
-pandas = "==1.0.3"
+typer = "==0.3.0"
+beautifulsoup4 = "==4.9.1"
+pandas = "==1.0.5"
+html5lib = "==1.1"
 
 [requires]
 python_version = "3.7"
