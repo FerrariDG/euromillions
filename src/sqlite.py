@@ -157,7 +157,7 @@ def get_result_by_date(dt: date) -> Optional[Tuple[int, ...]]:
         Number from the draw where the last two are the stars.
         Returns None if the date didn't exists on the table.
     """
-    query = f"SELECT n1, n2, n3, n4, n5, s1, s2, winners, prize FROM euro_results where dt = ?"
+    query = f"SELECT n1, n2, n3, n4, n5, s1, s2 FROM euro_results where dt = ?"
 
     with connect() as con:
         row = con.execute(query, (dt,)).fetchone()
