@@ -12,6 +12,8 @@ import pandas as pd
 import typer
 from bs4 import BeautifulSoup
 
+BALLS_DIV_ID = "ballsDrawn"
+
 
 # Euromillions main URL for scrapy the results
 EURO_MAIN_URL = "https://www.euro-millions.com/results/"
@@ -42,7 +44,7 @@ def get_euro_millions_result(draw_date: date) -> Optional[Dict[str, Any]]:
         return None
 
     soup = BeautifulSoup(page, 'html.parser')
-    balls = soup.find('div', {'id': 'jsBallOrderCell'})
+    balls = soup.find('div', {'id': BALLS_DIV_ID})
     if balls is None:
         typer.echo(
             typer.style("ERROR: ", fg=typer.colors.RED, bold=True) +
